@@ -9,7 +9,7 @@ SCENARIO("Matrix_ Creation", "[matrix_]") {
 	REQUIRE(Size({5, 3}).x() == 5);
 	REQUIRE(Size({5, 3}).y() == 3);
 
-	WHEN("creating a matrix 3x3") {
+	WHEN("creating a matrix 3x5") {
 		Matrix_<int, 3, 5> mat;
 		THEN("size must be 5 columns and 3 rows") {
 			REQUIRE(mat.size() == Size({5, 3}));
