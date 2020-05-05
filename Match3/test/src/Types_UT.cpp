@@ -1,4 +1,4 @@
-#include <Catch/Catch.hpp>
+#include <catch2/catch.hpp>
 
 #include <Match3/Types.hpp>
 using match3::Type;

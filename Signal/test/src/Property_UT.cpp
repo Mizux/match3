@@ -1,4 +1,4 @@
-#include <Catch/Catch.hpp>
+#include <catch2/catch.hpp>
 #include <Signal/Property.hpp>
 
 namespace {

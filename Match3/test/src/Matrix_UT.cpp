@@ -1,4 +1,4 @@
-#include <Catch/Catch.hpp>
+#include <catch2/catch.hpp>
 
 #include <Match3/Matrix.hpp>
 using match3::Matrix;

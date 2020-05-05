@@ -1,20 +1,27 @@
-cmake_minimum_required(VERSION 3.2)
-project(Signal VERSION 0.0.1 LANGUAGES CXX)
-
 #add_subdirectory(doc)
 
 file(GLOB_RECURSE _HDRS "include/*.hpp" "include/*.hxx")
 file(GLOB_RECURSE _SRCS "src/*.[hc]pp")
 
-add_library(${PROJECT_NAME} ${_HDRS} ${_SRCS})
-set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
-target_include_directories(${PROJECT_NAME} PUBLIC include)
+add_library(Signal ${_HDRS} ${_SRCS})
+target_include_directories(Signal PUBLIC
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+	$<INSTALL_INTERFACE:include>)
+set_target_properties(Signal PROPERTIES
+	PUBLIC_HEADER "${_HDRS}"
+  LINKER_LANGUAGE CXX
+	)
+add_library(match3::Signal ALIAS Signal)
 
-add_subdirectory(test)
+if(BUILD_TESTING)
+	add_subdirectory(test)
+endif()
+
+install(TARGETS Signal EXPORT Match3Targets)
 
 #find_program(CPPCHECK cppcheck)
 #if(CPPCHECK)
-#	add_custom_command(TARGET ${PROJECT_NAME}
+#	add_custom_command(TARGET Signal
 #		POST_BUILD
 #		COMMAND ${CPPCHECK} -q --enable=all --inconclusive --inline-suppr
 #		-Iinclude src test
