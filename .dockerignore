@@ -1,0 +1,30 @@
+# Project Files unneeded by docker
+.dockerignore
+
+.git
+.gitignore
+.github
+.clang-format
+
+# CMake
+cmake/docs
+cmake/README.md
+
+ci/docker
+ci/docs
+ci/cache
+ci/Makefile
+
+AUTHORS
+CONTRIBUTORS
+LICENSE
+README.md
+CONTRIBUTING.md
+
+# Native cmake build
+build/
+build*/
+
+# Editor directories and files
+*.user
+*.swp

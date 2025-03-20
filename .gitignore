@@ -1,7 +1,17 @@
 build/
+build*/
+export/
 cache/
-.clangd/
 
-# Editor directories and files
-*.user
+.vagrant/
+
+# IDE
+.vs/
+.cache/
+# Kdevelop
+.kdev4/
+*.kdev4
+# vim
 compile_commands.json
+*.swp
+*.user
