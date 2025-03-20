@@ -22,10 +22,8 @@ jobs:
     env:
       CTEST_OUTPUT_ON_FAILURE: 1
     steps:
-      - name: Install Qt6
-        uses: jurplel/install-qt-action@v3
-        with:
-          version: 6.*
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
       - uses: actions/checkout@v4
       - name: Check CMake
         run: |
