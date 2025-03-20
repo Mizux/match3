@@ -1,6 +1,3 @@
-cmake_minimum_required(VERSION 3.2)
-project(Match3 VERSION 0.0.1 LANGUAGES CXX)
-
 option(ENABLE_DOC "Compile doxygen documentation" OFF)
 
 ###########
