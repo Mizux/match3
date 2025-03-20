@@ -20,10 +20,10 @@ jobs:
     name: MacOS•CMake(${{matrix.cmake.name}})
     runs-on: macos-13 # last macos intel based runner
     steps:
-    - name: Install Qt6
-      run: |
-        brew install qt@6;
-        echo "/usr/local/opt/qt@5/bin" >> $GITHUB_PATH
+      - name: Install Qt6
+        run: |
+          brew install qt@6;
+          echo "/usr/local/opt/qt@6/bin" >> $GITHUB_PATH
       - uses: actions/checkout@v4
       - name: Check CMake
         run: cmake --version
