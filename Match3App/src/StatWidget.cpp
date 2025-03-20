@@ -53,7 +53,9 @@ StatWidget::_setupWidget(const QString& title) {
 	{
 		QGroupBox* box = new QGroupBox(title);
 		box->setObjectName("title");
-		box->setMinimumWidth(QFontMetrics(box->font()).width(box->title()) * 2);
+		box->setMinimumWidth(QFontMetrics(box->font()).size(
+			Qt::TextSingleLine,
+			box->title()).width() * 2);
 		QHBoxLayout* boxLayout = new QHBoxLayout;
 		box->setLayout(boxLayout);
 
