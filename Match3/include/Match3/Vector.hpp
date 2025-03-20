@@ -3,6 +3,7 @@
 
 #include <array>
 #include <ostream>
+#include <string>
 #include <vector>
 
 namespace match3 {
