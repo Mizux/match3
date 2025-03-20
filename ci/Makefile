@@ -4,12 +4,12 @@ SHA1 := $(shell git rev-parse --verify HEAD)
 
 # General commands
 .PHONY: help
-BOLD=\e[1m
-RESET=\e[0m
+BOLD:=\e[1m
+RESET:=\e[0m
 
 help:
 	@echo -e "${BOLD}SYNOPSIS${RESET}"
-	@echo -e "\tmake <target> [NOCACHE=1]"
+	@echo -e "\tmake <target> [NOCACHE=1] [VERBOSE=1]"
 	@echo
 	@echo -e "${BOLD}DESCRIPTION${RESET}"
 	@echo -e "\ttest build inside docker container to have a reproductible build."
@@ -21,8 +21,8 @@ help:
 	@echo -e "\t${BOLD}<distro>_<stage>${RESET}: build a <stage> docker image for a specific distro."
 	@echo -e "\t${BOLD}save_<distro>_<stage>${RESET}: Save a <stage> docker image for a specific distro."
 	@echo -e "\t${BOLD}sh_<distro>_<stage>${RESET}: run a container using the <stage> docker image specified (debug purpose)."
-	@echo -e "\t${BOLD}clean_<distro>_<stage>${RESET}: Remove cache and docker image."
-	@echo -e "\t${BOLD}clean_native${RESET}: Remove ALL caches and docker images."
+	@echo -e "\t${BOLD}clean_<distro>_<stage>${RESET}: Remove a <stage> docker image for a specific distro."
+	@echo -e "\t${BOLD}clean_all${RESET}: Remove ALL caches and docker images."
 	@echo
 	@echo -e "\tWith ${BOLD}<distro>${RESET}:"
 	@echo -e "\t\t${BOLD}almalinux${RESET} (latest)"
@@ -79,19 +79,14 @@ help:
 	@echo -e "\t${BOLD}clean_toolchains${RESET}: Remove ALL cache and docker image."
 	@echo
 	@echo -e "\tWith ${BOLD}<toolchain>${RESET}:"
-	@echo -e "\t\t${BOLD}arm-linux-gnueabihf${RESET} (linaro toolchain)"
-	@echo -e "\t\t${BOLD}armv8l-linux-gnueabihf${RESET} (linaro toolchain)"
-	@echo -e "\t\t${BOLD}arm-linux-gnueabi${RESET} (linaro toolchain)"
-	@echo -e "\t\t${BOLD}armeb-linux-gnueabihf${RESET} (linaro toolchain)"
-	@echo -e "\t\t${BOLD}armeb-linux-gnueabi${RESET} (linaro toolchain)"
+	@echo -e "\t\t${BOLD}armv7-eabihf${RESET} (alias: arm) (bootlin toolchain)"
+	@echo -e "\t\t${BOLD}armebv7-eabihf${RESET} (alias: armeb) (bootlin toolchain)"
 	@echo -e "\t\t${BOLD}aarch64${RESET} (alias: arm64) (bootlin toolchain)"
-	@echo -e "\t\t${BOLD}aarch64be${RESET} (bootlin toolchain)"
-	@echo -e "\t\t${BOLD}aarch64-linux-gnu${RESET} (linaro toolchain)"
-	@echo -e "\t\t${BOLD}aarch64_be-linux-gnu${RESET} (linaro toolchain)"
+	@echo -e "\t\t${BOLD}aarch64be${RESET} (alias: arm64be) (bootlin toolchain)"
 	@echo -e "\t\t${BOLD}mips32-r6${RESET} (alias: mips) (codespace toolchain)"
 	@echo -e "\t\t${BOLD}mips64-r6${RESET} (alias: mips64) (codespace toolchain)"
-	@echo -e "\t\t${BOLD}mips32el-r6${RESET} (alias: mipsle) (codespace toolchain)"
-	@echo -e "\t\t${BOLD}mips64el-r6${RESET} (alias: mips64le) (codespace toolchain)"
+	@echo -e "\t\t${BOLD}mips32el-r6${RESET} (alias: mipsel) (codespace toolchain)"
+	@echo -e "\t\t${BOLD}mips64el-r6${RESET} (alias: mips64el) (codespace toolchain)"
 	@echo -e "\t\t${BOLD}mips32-r2${RESET} (codespace toolchain)"
 	@echo -e "\t\t${BOLD}mips64-r2${RESET} (codespace toolchain)"
 	@echo -e "\t\t${BOLD}mips32el-r2${RESET} (codespace toolchain)"
