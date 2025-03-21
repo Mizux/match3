@@ -32,4 +32,7 @@ endif()
 target_link_libraries(Match3App ${PROJECT_NAMESPACE}::Match3 ${QT_LIBS})
 add_executable(${PROJECT_NAMESPACE}::Match3App ALIAS Match3App)
 
-install(TARGETS Match3App EXPORT Match3Targets)
+install(TARGETS Match3App
+  EXPORT Match3Targets
+  RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)

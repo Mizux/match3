@@ -1,18 +1,15 @@
-#add_subdirectory(doc)
-
-file(GLOB_RECURSE _HDRS "include/*.hpp" "include/*.hxx")
-file(GLOB_RECURSE _SRCS "src/*.[hc]pp")
-
-add_library(Signal)
-target_sources(Signal PRIVATE ${_HDRS} ${_SRCS})
-target_include_directories(Signal PUBLIC
+add_library(Signal INTERFACE)
+file(GLOB _HDRS "include/Signal/*.hpp")
+file(GLOB _DETAILS_HDRS "include/Signal/details/*.hxx")
+#target_sources(Signal INTERFACE ${_HDRS} ${_DETAILS_HDRS})
+target_include_directories(Signal INTERFACE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 set_target_properties(Signal PROPERTIES
   PUBLIC_HEADER "${_HDRS}"
-  LINKER_LANGUAGE CXX
+  PRIVATE_HEADER "${_DETAILS_HDRS}"
 )
-#target_link_libraries(Signal PRIVATE ...)
+#target_link_libraries(Signal INTERFACE ...)
 add_library(${PROJECT_NAMESPACE}::Signal ALIAS Signal)
 
 if(BUILD_TESTING)
@@ -22,7 +19,5 @@ endif()
 install(TARGETS Signal
   EXPORT Match3Targets
   PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/Signal
-  ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  #RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+  PRIVATE_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/Signal/details
 )

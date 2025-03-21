@@ -35,7 +35,6 @@ add_subdirectory(Match3)
 add_subdirectory(Match3App)
 
 # Install
-include(GNUInstallDirs)
 install(EXPORT ${PROJECT_NAME}Targets
   NAMESPACE ${PROJECT_NAMESPACE}::
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}

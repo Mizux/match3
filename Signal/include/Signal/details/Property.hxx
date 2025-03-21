@@ -2,6 +2,8 @@
 #pragma once
 
 #include "../Property.hpp"
+
+#include <cstdint>
 #include <unordered_map>
 
 namespace Signal {
