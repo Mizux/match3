@@ -45,11 +45,9 @@ RUN CTEST_OUTPUT_ON_FAILURE=1 cmake --build build --target test -v
 
 # Create a production image
 FROM ubuntu:latest AS prod
-RUN ln -snf /usr/share/zoneinfo/Europe/Paris /etc/localtime \
-&& echo Europe/Paris > /etc/timezone
 
-RUN apt-get update -q \
-&& apt-get install -yq qt6-base-dev libgl-dev \
+RUN apt update -q \
+&& apt install -yq libqt6gui6 libqt6widgets6 \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

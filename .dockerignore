@@ -26,5 +26,7 @@ build/
 build*/
 
 # Editor directories and files
+.cache
+.vscode
 *.user
 *.swp

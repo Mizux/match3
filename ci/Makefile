@@ -169,7 +169,7 @@ DISTROS := \
 ############
 ## STAGES ##
 ############
-STAGES := env devel build test install_env install_devel install_build install_test
+STAGES := env devel build test install_env install_devel install_build install_test prod
 
 define make-stage-target =
 #$$(info STAGE: $1)
